@@ -9,9 +9,9 @@ BITS 16 ; everything here is 16 bit code
 	mov ah,0x0e ; print command
 	int 0x10  ; talk to video card
 
-	; read the disk into 0x9000
-	mov bx, 0x9000 ; where to put the loaded data
-	mov dh, 16 ; sectors to read
+	; read the disk into 0x8000
+	mov bx, 0x8000 ; where to put the loaded data
+	mov dh, 4 ; sectors to read
 
 	push dx
 	mov ah, 0x02
@@ -24,9 +24,10 @@ BITS 16 ; everything here is 16 bit code
 	pop dx
 
 	mov al, 'S' ; success!
+	call print_char
 
 	; jump to it
-	jmp bx
+	; jmp bx
 
 	jmp hang
 
