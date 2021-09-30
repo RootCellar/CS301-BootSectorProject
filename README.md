@@ -13,4 +13,16 @@ This is intended to be a program that will run when a machine (real or virtual) 
 The goal is that it will boot, read another program off of the disk (that does something interesting),
 then execute it in a normal assembly environment.
 
+## Informational Links
+
+Used to help me with this project.
+
+https://www.cs.uaf.edu/2011/fall/cs301/lecture/11_18_bootblock.html
+
+https://en.wikipedia.org/wiki/BIOS_interrupt_call
+
+http://www.delorie.com/djgpp/doc/rbinter/id/13/6.html
+
+https://github.com/FRosner/FrOS/tree/minimal-c-kernel
+
 
