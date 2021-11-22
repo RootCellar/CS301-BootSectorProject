@@ -1,3 +1,11 @@
+;
+; BUILD:
+; nasm -f bin -o boot.bin boot.asm
+;
+; RUN:
+; qemu-system-x86_64 boot.bin
+;
+
 BITS 16 ; everything here is 16 bit code
 ;  Code gets loaded by the PC BIOS into address 0x7C00 and executed.
 	; set up a stack
@@ -8,10 +16,10 @@ BITS 16 ; everything here is 16 bit code
 	mov ah,0x0e ; print command
 	int 0x10  ; talk to video card
 
-	; read the disk into 0x9000
+	; read the disk into 0xB000
 	mov bx, 0
 	mov es, bx
-	mov bx, 0x9000 ; where to put the loaded data
+	mov bx, 0xB000 ; where to put the loaded data
 
 	push dx
 	mov ah, 0x02
@@ -24,11 +32,22 @@ BITS 16 ; everything here is 16 bit code
 
 	pop dx
 
+	;mov bx, 0
+	;mov es, bx
+
 	mov al, 'S' ; success!
 	call print_char
 
+	;mov bx, 0xB000
+	;mov al, [bx]
+	;call print_char
+
+	mov bx, 0
+	mov es, bx
+	mov bx, 0xB000
+
 	; jump to it
-	jmp 0x9000
+	jmp bx
 
 	jmp hang
 
