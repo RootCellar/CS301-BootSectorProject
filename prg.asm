@@ -1,6 +1,6 @@
 ; TO BE LOADED AND RAN
 
-mov al, 'M'
+mov al, 'C'
 call print_char_ex
 
 mov bx, printed_string ; data at label
@@ -10,6 +10,9 @@ call print_string
 ; mov dx, 100
 ; mov al, 0x00FF
 ; call draw_pixel
+
+mov bx, success_string ; data at label
+call print_string
 
 ; HANG
 loop:
@@ -45,4 +48,6 @@ print_string:
 
 section .data
 printed_string:
-  db `\nHello!`, 0
+  db `\r\n\nHello!`, 0
+success_string:
+	db `\r\n\nSuccessfully Loaded and Executed`
